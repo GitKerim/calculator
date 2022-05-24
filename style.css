@@ -13,37 +13,43 @@ body{
     text-align: center;
 }
 .calculator{
-    height:505px;
-    width: 400px;
+    padding: 25px;
     background-color: black;
-    border-radius: 15px;
+    border-radius: 20px;
     display: grid;
-    grid-template-columns: 87,5px 87,5px 87,5px 87,5px ;
-    grid-template-rows: 80px 80px 80px 80px 80px;
-    row-gap: 25px;
-    justify-content: center;
-    padding: 25px 0px;
+    grid-template-rows: 80px 400px;
+    grid-template-columns: 320px;
+    row-gap: 20px;
 }
 .display{
     background-color: blanchedalmond;
-    height: 80px;
-    width: 350px;
-    grid-area: 1 / 1 / span 1 / span 4;
-    box-sizing: border-box;
-
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 240px 80px;
+    grid-template-rows: 30px 50px;
 }
 .buttons{
-    height: 400px;
-    width: 350px;
-    grid-area: 2 / 1 / span 5 / span 4;
-    box-sizing: border-box;
-
+    display: grid;
+    grid-template-columns: 80px 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px 80px;
+    justify-content: center;
 }
-.rows{
-    width:350;
-    height: 80px;
-    margin: 0%;
-    padding: 0%;
-    background-color: azure;
-
+.btn{
+    background-color: grey;
+    border-style: 2px solid black;
+    border-radius: 10px;
+    margin: 0;
+    font-size: 15px;
+    color: white;
+}
+.widebtn{
+    grid-column: 1 / span 2;
+}
+.operationbtn{
+    background-color: orangered;
+}
+.deletebtn{
+    grid-area: 1 / 2 / span 2 / span 2;
+    background-color: blanchedalmond;
+    border-style: none;
 }
