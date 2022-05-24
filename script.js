@@ -1,12 +1,23 @@
 let numbers = document.querySelectorAll('[type="number"]');
 let number1 = 0;
-let operant;
+let operant = document.querySelectorAll('[type=operant]')
 let number2;
 let display = document.getElementById('maindisplay');
 let clear = document.getElementById('clear');
 let signChange = document.getElementById('signchange');
 let backSpace = document.getElementById('backspace');
+let dot = document.getElementById('dot');
 
+dot.addEventListener('click', () => {
+   if(number1.includes('.')){
+      dot.disabled = true
+   }else{
+      number1 = number1+'.';
+      display.innerText = number1;
+      dot.disabled = false
+
+      }
+}); 
 
 backSpace.addEventListener('click', () =>{
    if (number1 === "" || number1 == 0) {
