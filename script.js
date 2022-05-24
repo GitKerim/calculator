@@ -5,9 +5,20 @@ let number2;
 let display = document.getElementById('maindisplay');
 let clear = document.getElementById('clear');
 let signChange = document.getElementById('signchange');
+let backSpace = document.getElementById('backspace');
 
 
-clear.addEventListener("click",  (e) => {
+backSpace.addEventListener('click', () =>{
+   if (number1 === "" || number1 == 0) {
+   number1 = 0
+   display.innerText = number1;
+   }else{
+   number1 = number1.slice(0, -1); 
+   display.innerText = number1;
+   }
+});
+
+clear.addEventListener("click",  () => {
    number1 = 0;
    number2 = 0;
    display.innerText = number1;
@@ -22,6 +33,7 @@ signChange.addEventListener("click",  (e) => {
    number1.toString()[0] == '-' ? number1 = number1.substring(1) : number1 = '-'+ number1
    display.innerText = number1;
  });
+
 const add = (a,b) => { return a+b; } 
 const subtract = (a,b) => { return a-b;}
 const multiply = (a,b) => { return a*b; }
