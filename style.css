@@ -52,4 +52,7 @@ body{
     grid-area: 1 / 2 / span 2 / span 2;
     background-color: blanchedalmond;
     border-style: none;
+    border-top-right-radius: 15%;
+    border-bottom-right-radius: 15%;
+
 }
