@@ -35,7 +35,7 @@ body{
     border-bottom-right-radius: 15%;
 
 }
-.maindisplay{
+#maindisplay{
     font-size: 35px;
     grid-column: 1 / span 1;
     display: flex;
