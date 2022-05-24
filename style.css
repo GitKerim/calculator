@@ -26,6 +26,7 @@ body{
     border-radius: 10px;
     display: grid;
     grid-template-columns: 240px 80px;
+    grid-template-rows: 30px 50px;
 }
 .deletebtn{
     grid-column: 2 / span 2;
@@ -42,9 +43,21 @@ body{
     align-items: center;
     justify-content: flex-end;
     font-weight: bold;
-  
  }
 
+.secondarydisplay{
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: lighter;
+}
+.operatorsign{
+    margin-left: 15px;
+    margin-right: 3px;
+    font-size: 20px;
+    font-weight: bold;
+}
 .buttons{
     display: grid;
     grid-template-columns: 80px 80px 80px 80px;
