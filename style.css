@@ -22,12 +22,32 @@ body{
     row-gap: 20px;
 }
 .display{
-    background-color: blanchedalmond;
+    background-color: lightgray;
     border-radius: 10px;
     display: grid;
     grid-template-columns: 240px 80px;
-    grid-template-rows: 30px 50px;
+    grid-template-rows: 20px 60px;
 }
+.deletebtn{
+    grid-area: 1 / 2 / span 2 / span 2;
+    background-color: lightgray;
+    border-style: none;
+    border-top-right-radius: 15%;
+    border-bottom-right-radius: 15%;
+    padding-top: 25px;
+
+}
+
+.maindisplay{
+    font-size: 35px;
+    grid-row: 2 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    font-weight: bold;
+}
+
 .buttons{
     display: grid;
     grid-template-columns: 80px 80px 80px 80px;
@@ -39,7 +59,7 @@ body{
     border-style: 2px solid black;
     border-radius: 10px;
     margin: 0;
-    font-size: 15px;
+    font-size: 20px;
     color: white;
 }
 .widebtn{
@@ -47,12 +67,4 @@ body{
 }
 .operationbtn{
     background-color: orangered;
-}
-.deletebtn{
-    grid-area: 1 / 2 / span 2 / span 2;
-    background-color: blanchedalmond;
-    border-style: none;
-    border-top-right-radius: 15%;
-    border-bottom-right-radius: 15%;
-
 }
