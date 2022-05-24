@@ -14,9 +14,8 @@ dot.addEventListener('click', () => {
    }else{
       number1 = number1+'.';
       display.innerText = number1;
-      dot.disabled = false
-
-      }
+      dot.disabled = false;
+   }
 }); 
 
 backSpace.addEventListener('click', () =>{
@@ -38,6 +37,12 @@ clear.addEventListener("click",  () => {
 numbers.forEach(number => number.addEventListener("click", (e) =>{
 number1.toString()[0] == 0 ? number1 = e.target.innerText : number1 = number1.toString() + e.target.innerText;
 display.innerText = number1
+if(number1.length >= 12){  
+   number1 = 0;
+   number2 = 0;
+   display.innerText = number1;
+} 
+
 }));
 
 signChange.addEventListener("click",  (e) => {
