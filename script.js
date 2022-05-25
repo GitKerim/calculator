@@ -7,10 +7,11 @@ let backSpace = document.getElementById('backspace');
 let dot = document.getElementById('dot');
 let displayText = 0;
 let number1;
-let number2;
+let number2 = null;
 let sign = null;
 let result;
 let numLength;
+let textLength;
 
 operants.forEach(operant => operant.addEventListener('click', (e) =>{
    if(sign == null){
@@ -18,12 +19,17 @@ operants.forEach(operant => operant.addEventListener('click', (e) =>{
       number1 = displayText;
       displayText = displayText + sign;
       display.innerText = displayText;
+   }else if(sign != null && number2 == null){
+      sign = e.target.innerText;
+      displayText = number1 + sign;
+      display.innerText = displayText;
    }else{
       operate(sign,number1,number2)
-      displayText = result;
-      display.innerText = displayText
-      sign = null;
-      number2 = 0
+      number1 = result;
+      number2 = null
+      sign = e.target.innerText;
+      displayText = result + sign;
+      display.innerText = displayText;
    }
 
 }))
@@ -34,9 +40,10 @@ if(displayText.toString()[0] == 0 && displayText.toString()[1] != '.'){
    display.innerText = displayText;
 }else if(sign != null){
    displayText = displayText + e.target.innerText;
-   let numLength = number1.length;
-   number2 = displayText.slice(numLength+1);
-   display.innerHTML = displayText
+   numLength = number1.toString().length;
+   textLength = displayText.toString().length;
+   number2 = displayText.toString().substring(numLength + 1,textLength);
+   display.innerText = displayText
 }else{
    displayText = displayText + e.target.innerText;
    display.innerText = displayText;
