@@ -1,53 +1,58 @@
 let numbers = document.querySelectorAll('[type="number"]');
-let operant = document.querySelectorAll('[type=operant]')
+let operants = document.querySelectorAll('[type=operant]')
 let display = document.getElementById('maindisplay');
 let clear = document.getElementById('clear');
 let signChange = document.getElementById('signchange');
 let backSpace = document.getElementById('backspace');
 let dot = document.getElementById('dot');
-let number1 = 0;
+let displayText = 0;
+let number1;
 let number2;
-let numDump
+let sign = null;
+let result;
 
 numbers.forEach(number => number.addEventListener("click", (e) =>{
-number1.toString()[0] == 0 ? number1 = e.target.innerText : number1 = number1.toString() + e.target.innerText;
-numDump = number1;
-display.innerText = numDump;
-if(number1.length >= 12){  
-   number1 = 0;
-   number2 = 0;
-   display.innerText = number1;
-} 
+if(displayText.toString()[0] == 0 && displayText.toString()[1] != '.'){
+   displayText = e.target.innerText
+   display.innerText = displayText;
+}else if(sign != null){
+   displayText = number1 + sign + e.target.innerText
+   let  numLength = number1.length()
+   number2 = displayText.slice(numLength+1);
+}else{
+   displayText = displayText + e.target.innerText;
+   display.innerText = displayText;
+}
 }));
 
 clear.addEventListener("click",  () => {
-   number1 = 0;
+   displayText = 0;
    number2 = 0;
-   display.innerText = number1;
+   display.innerText = displayText;
 });
 
 signChange.addEventListener("click",  (e) => {
-   number1.toString()[0] == '-' ? number1 = number1.substring(1) : number1 = '-'+ number1
-   display.innerText = number1;
+   displayText.toString()[0] == '-' ? displayText = displayText.substring(1) : displayText = '-'+ displayText
+   display.innerText = displayText;
  });
 
 dot.addEventListener('click', () => {
-   if(number1.includes('.')){
+   if(displayText.includes('.')){
       dot.disabled = true
    }else{
-      number1 = number1+'.';
-      display.innerText = number1;
+      displayText = displayText+'.';
+      display.innerText = displayText;
       dot.disabled = false;
    }
 }); 
 
 backSpace.addEventListener('click', () =>{
-   if (number1 === "" || number1 == 0) {
-   number1 = 0
-   display.innerText = number1;
+   if (displayText === "" || displayText == 0) {
+   displayText = 0
+   display.innerText = displayText;
    }else{
-   number1 = number1.slice(0, -1); 
-   display.innerText = number1;
+   displayText = displayText.slice(0, -1); 
+   display.innerText = displayText;
    }
 });
 
@@ -58,13 +63,17 @@ const divide = (a,b) => { return a == 0 || b == 0 ? 'Error' : a/b }
 
 let operate = (operation,a,b) => {
     switch (operation){
-        case 'adding':
-           return add(a,b);
-        case 'subtracting':
-           return subtract(a,b);
-        case 'dividing':
-           return divide(a,b);
-        case 'multiplying':
-          return multiply(a,b);
+        case '+':
+           result = add(parseInt(a),parseInt(b));
+           return result
+        case '-':
+         result = subtract(a,b);
+           return result
+        case '/':
+         result = divide(a,b);
+           return result
+        case '*':
+         result = multiply(a,b);
+          return result
     }
 }
