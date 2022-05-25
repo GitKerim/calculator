@@ -1,12 +1,33 @@
 let numbers = document.querySelectorAll('[type="number"]');
-let number1 = 0;
 let operant = document.querySelectorAll('[type=operant]')
-let number2;
 let display = document.getElementById('maindisplay');
 let clear = document.getElementById('clear');
 let signChange = document.getElementById('signchange');
 let backSpace = document.getElementById('backspace');
 let dot = document.getElementById('dot');
+let number1 = 0;
+let number2;
+
+numbers.forEach(number => number.addEventListener("click", (e) =>{
+number1.toString()[0] == 0 ? number1 = e.target.innerText : number1 = number1.toString() + e.target.innerText;
+display.innerText = number1
+if(number1.length >= 12){  
+   number1 = 0;
+   number2 = 0;
+   display.innerText = number1;
+} 
+}));
+
+clear.addEventListener("click",  () => {
+   number1 = 0;
+   number2 = 0;
+   display.innerText = number1;
+});
+
+signChange.addEventListener("click",  (e) => {
+   number1.toString()[0] == '-' ? number1 = number1.substring(1) : number1 = '-'+ number1
+   display.innerText = number1;
+ });
 
 dot.addEventListener('click', () => {
    if(number1.includes('.')){
@@ -27,28 +48,6 @@ backSpace.addEventListener('click', () =>{
    display.innerText = number1;
    }
 });
-
-clear.addEventListener("click",  () => {
-   number1 = 0;
-   number2 = 0;
-   display.innerText = number1;
-});
-
-numbers.forEach(number => number.addEventListener("click", (e) =>{
-number1.toString()[0] == 0 ? number1 = e.target.innerText : number1 = number1.toString() + e.target.innerText;
-display.innerText = number1
-if(number1.length >= 12){  
-   number1 = 0;
-   number2 = 0;
-   display.innerText = number1;
-} 
-
-}));
-
-signChange.addEventListener("click",  (e) => {
-   number1.toString()[0] == '-' ? number1 = number1.substring(1) : number1 = '-'+ number1
-   display.innerText = number1;
- });
 
 const add = (a,b) => { return a+b; } 
 const subtract = (a,b) => { return a-b;}
