@@ -10,15 +10,33 @@ let number1;
 let number2;
 let sign = null;
 let result;
+let numLength;
+
+operants.forEach(operant => operant.addEventListener('click', (e) =>{
+   if(sign == null){
+      sign = e.target.innerText;
+      number1 = displayText;
+      displayText = displayText + sign;
+      display.innerText = displayText;
+   }else{
+      operate(sign,number1,number2)
+      displayText = result;
+      display.innerText = displayText
+      sign = null;
+      number2 = 0
+   }
+
+}))
 
 numbers.forEach(number => number.addEventListener("click", (e) =>{
 if(displayText.toString()[0] == 0 && displayText.toString()[1] != '.'){
    displayText = e.target.innerText
    display.innerText = displayText;
 }else if(sign != null){
-   displayText = number1 + sign + e.target.innerText
-   let  numLength = number1.length()
+   displayText = displayText + e.target.innerText;
+   let numLength = number1.length;
    number2 = displayText.slice(numLength+1);
+   display.innerHTML = displayText
 }else{
    displayText = displayText + e.target.innerText;
    display.innerText = displayText;
@@ -29,6 +47,7 @@ clear.addEventListener("click",  () => {
    displayText = 0;
    number2 = 0;
    display.innerText = displayText;
+   sign = null
 });
 
 signChange.addEventListener("click",  (e) => {
