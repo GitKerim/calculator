@@ -7,10 +7,12 @@ let backSpace = document.getElementById('backspace');
 let dot = document.getElementById('dot');
 let number1 = 0;
 let number2;
+let numDump
 
 numbers.forEach(number => number.addEventListener("click", (e) =>{
 number1.toString()[0] == 0 ? number1 = e.target.innerText : number1 = number1.toString() + e.target.innerText;
-display.innerText = number1
+numDump = number1;
+display.innerText = numDump;
 if(number1.length >= 12){  
    number1 = 0;
    number2 = 0;
