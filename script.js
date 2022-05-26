@@ -72,9 +72,13 @@ clear.addEventListener("click",  () => {
 });
 
 signChange.addEventListener("click",  (e) => {
-   displayText.toString()[0] == '-' ? displayText = displayText.substring(1) : displayText = '-'+ displayText
+   if(displayText.toString()[0] == '-'){
+   displayText = displayText.substring(1);
+   }else{
+   displayText = '-'+ displayText;
+   number1 = displayText;
    display.innerText = displayText;
- });
+ }});
 
 dot.addEventListener('click', () => {
       displayText = displayText +'.';
@@ -125,7 +129,7 @@ const divide = (a,b) => { return a == 0 || b == 0 ? 'Error' : a/b }
 let operate = (operation,a,b) => {
     switch (operation){
         case '+':
-          number1 = add(parseFloat(a),parseFloat(b));
+      number1 = add(parseFloat(a),parseFloat(b));
            return number1
         case '-':
        number1 = subtract(parseFloat(a),parseFloat(b));
