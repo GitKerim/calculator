@@ -74,6 +74,8 @@ clear.addEventListener("click",  () => {
 signChange.addEventListener("click",  (e) => {
    if(displayText.toString()[0] == '-'){
    displayText = displayText.substring(1);
+   number1 = displayText;
+   display.innerText = displayText;
    }else{
    displayText = '-'+ displayText;
    number1 = displayText;
