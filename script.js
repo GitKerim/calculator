@@ -8,18 +8,19 @@ let dot = document.getElementById('dot');
 let equals = document.getElementById('equals')
 
 let displayText = 0;
-let number1;
+let number1 = 0;
 let number2 = null;
 let sign = null;
 let numLength;
 let textLength;
 
 equals.addEventListener('click', () => {
+   if(number2 != null){
    operate(sign,number1,number2)
    number2 = null
    sign = null;
    displayText = number1;
-   display.innerText = displayText;
+   display.innerText = displayText}
 })
 
 operants.forEach(operant => operant.addEventListener('click', (e) =>{
@@ -28,10 +29,12 @@ operants.forEach(operant => operant.addEventListener('click', (e) =>{
       number1 = displayText;
       displayText = displayText + sign;
       display.innerText = displayText;
+      dot.disabled = false;
    }else if(sign != null && number2 == null){
       sign = e.target.innerText;
       displayText = number1 + sign;
       display.innerText = displayText;
+      dot.disabled = false;
    }else{
       operate(sign,number1,number2)
       number2 = null
@@ -61,6 +64,7 @@ if(displayText.toString()[0] == 0 && displayText.toString()[1] != '.'){
 
 clear.addEventListener("click",  () => {
    displayText = 0;
+   number1 = 0
    number2 = null;
    display.innerText = displayText;
    sign = null
@@ -73,21 +77,22 @@ signChange.addEventListener("click",  (e) => {
  });
 
 dot.addEventListener('click', () => {
-   if(displayText.includes('.')){
-      dot.disabled = true
-   }else{
-      displayText = displayText+'.';
+      displayText = displayText +'.';
       display.innerText = displayText;
-      dot.disabled = false;
-   }
+      dot.disabled = true;
 }); 
 
 backSpace.addEventListener('click', () =>{
-   if (displayText.length == 1 || displayText == 0) {
+   if(dot.disabled == true && displayText.slice(-1) == '.'){
+      displayText = displayText.slice(0, -1);
+      dot.disabled = false;
+      number1 = displayText;
+      display.innerText = displayText
+   }else if (displayText.length == 1 || displayText == 0) {
       displayText = 0
       number1 = 0
       display.innerText = displayText;
-   }else if(number2 != null && number2.length != 1){
+   }else if(number2 != null && number2.length !=1){
       numLength = number1.toString().length;
       textLength = displayText.toString().length;
       displayText = displayText.toString().slice(0, -1);
@@ -120,16 +125,16 @@ const divide = (a,b) => { return a == 0 || b == 0 ? 'Error' : a/b }
 let operate = (operation,a,b) => {
     switch (operation){
         case '+':
-          number1 = add(parseInt(a),parseInt(b));
+          number1 = add(parseFloat(a),parseFloat(b));
            return number1
         case '-':
-       number1 = subtract(a,b);
+       number1 = subtract(parseFloat(a),parseFloat(b));
            return number1
         case '/':
-       number1 = divide(a,b);
+       number1 = divide(parseFloat(a),parseFloat(b));
            return number1
         case '*':
-       number1 = multiply(a,b);
+       number1 = multiply(parseFloat(a),parseFloat(b));
           return number1
     }
 }
