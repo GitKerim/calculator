@@ -90,10 +90,12 @@ dot.addEventListener('click', () => {
 
 backSpace.addEventListener('click', () =>{
    if(dot.disabled == true && displayText.slice(-1) == '.'){
-      displayText = displayText.slice(0, -1);
       dot.disabled = false;
-      number1 = displayText;
-      display.innerText = displayText
+      numLength = number1.toString().length;
+      textLength = displayText.toString().length;
+      displayText = displayText.toString().slice(0, -1);
+      number2 = displayText.toString().substring(numLength + 1,textLength);
+      display.innerText = displayText;
    }else if (displayText.length == 1 || displayText == 0) {
       displayText = 0
       number1 = 0
@@ -109,13 +111,7 @@ backSpace.addEventListener('click', () =>{
       displayText = displayText.toString().slice(0, -1);
       number1 = displayText;
       display.innerText = displayText;
-      number2 = null
-   }else if(number2 != null){
-      numLength = number1.toString().length;
-      textLength = displayText.toString().length;
-      displayText = displayText.toString().slice(0, -1);
-      number2 = displayText.toString().substring(numLength + 1,textLength);
-      display.innerText = displayText;
+      number2 = 0
    }else if(number1 == displayText && sign == null){
       displayText = displayText.toString().slice(0, -1);
       number1 = displayText;
