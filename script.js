@@ -16,12 +16,12 @@ let textLength;
 
 equals.addEventListener('click', () => {
    if(number2 != null){
-   operate(sign,number1,number2)
-   number2 = null
+   number1 = Math.round(operate(sign,number1,number2)*1000)/1000;
+   number2 = null;
    sign = null;
    displayText = number1;
-   display.innerText = displayText}
-})
+   display.innerText = displayText;
+}})
 
 operants.forEach(operant => operant.addEventListener('click', (e) =>{
    if(sign == null){
@@ -36,7 +36,7 @@ operants.forEach(operant => operant.addEventListener('click', (e) =>{
       display.innerText = displayText;
       dot.disabled = false;
    }else{
-      operate(sign,number1,number2)
+      number1 = Math.round(operate(sign,number1,number2)*1000)/1000;
       number2 = null
       sign = e.target.innerText;
       displayText = number1 + sign;
