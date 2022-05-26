@@ -29,7 +29,6 @@ body{
     display: grid;
     grid-template-columns: 240px 80px;
     grid-template-rows: 80px;
-    box-shadow:inset 0 0 4px #000000
 }
 .deletebtn{
     grid-column: 2 / span 2;
