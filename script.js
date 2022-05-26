@@ -55,6 +55,7 @@ clear.addEventListener("click",  () => {
    number2 = 0;
    display.innerText = displayText;
    sign = null
+   dot.disabled = false;
 });
 
 signChange.addEventListener("click",  (e) => {
