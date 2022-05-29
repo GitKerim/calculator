@@ -140,3 +140,27 @@ let operate = (operation,a,b) => {
           return number1
     }
 }
+document.addEventListener('keydown', (event) => {
+	
+	if(!isNaN(event.key) && event.key !== ' '){
+		document.getElementById(`btn${event.key}`).click()   ;
+	}
+	if (event.key === '/' || event.key === '+' || event.key === '-' || event.key === '*') {
+		document.getElementById(`operant${event.key}`).click();
+	}
+   if (event.key === 'Escape') {
+		document.getElementById('clear').click();	
+   }
+   if (event.key === 'Control') {
+		document.getElementById('signchange').click();	
+   }
+	if (event.key === 'Backspace' || event.key ==='c' || event.key === 'C') {
+		document.getElementById('backspace').click();	
+	}
+	if (event.key === '=' || event.key === 'Enter') {
+		document.getElementById('equals').click();	
+	}
+	if (event.key === '.') {
+		document.getElementById('dot').click();	
+	}
+});
